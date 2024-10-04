@@ -14,7 +14,7 @@ export const getAuthzHeader = (req) => {
 export const getToken = (authzHeader) => {
   const tokenType = authzHeader.substring(0, 6);
   if (tokenType !== 'Basic ') {
-    return null;
+     return null;
   }
   return authzHeader.substring(6);
 };
