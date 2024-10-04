@@ -12,31 +12,31 @@ class AuthController {
     if (!authzHeader) {
       res.status(401).json({ error: 'Unauthorized' });
       res.end();
-      return;
+       return;
     }
     const token = getToken(authzHeader);
     if (!token) {
       res.status(401).json({ error: 'Unauthorized' });
       res.end();
-      return;
+       return;
     }
     const decodedToken = decodeToken(token);
     if (!decodedToken) {
       res.status(401).json({ error: 'Unauthorized' });
       res.end();
-      return;
+       return;
     }
     const { email, password } = getCredentials(decodedToken);
     const user = await dbClient.getUser(email);
     if (!user) {
       res.status(401).json({ error: 'Unauthorized' });
       res.end();
-      return;
+       return;
     }
     if (user.password !== pwdHashed(password)) {
       res.status(401).json({ error: 'Unauthorized' });
       res.end();
-      return;
+       return;
     }
     const accessToken = v4();
     await redisClient.set(`auth_${accessToken}`, user._id.toString('utf8'), 60 * 60 * 24);

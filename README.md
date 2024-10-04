@@ -11,7 +11,7 @@
 - Generate thumbnails for images
 
 # Resources
-## Read or watch:
+# Read or watch:
 
 - Node JS getting started
 - Process API doc

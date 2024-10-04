@@ -27,5 +27,4 @@ class UsersController {
     res.end();
   }
 }
-
 module.exports = UsersController;

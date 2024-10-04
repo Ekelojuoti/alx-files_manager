@@ -18,5 +18,4 @@ class AppController {
     res.end();
   }
 }
-
 module.exports = AppController;
